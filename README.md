@@ -78,3 +78,19 @@ URL esperada:
 - MathWorks Control System documentation.
 - IEC 60529 (IP Code).
 - National Instruments measurement fundamentals.
+
+
+## Corrección de jerarquía tipográfica
+
+- **Título 1:** mayúsculas, Times New Roman 16 pt, negrilla.
+- **Título 2:** mayúsculas, Times New Roman 14 pt, negrilla.
+- **Título 3:** mayúsculas, Times New Roman 12 pt, negrilla.
+- **Título 4:** minúsculas tipo oración, Times New Roman 12 pt, negrilla.
+- **Título 5:** minúsculas tipo oración, Times New Roman 12 pt, negrilla.
+
+Ejemplos correctos:
+
+- `3.3.1.1 Selección de los sensores`
+- `3.3.1.1.1 Criterios de selección`
+
+Se mantienen las mayúsculas necesarias para nombres propios, siglas y acrónimos.
