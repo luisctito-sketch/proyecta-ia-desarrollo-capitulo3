@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PROYECTA-IA: desarrollo técnico del Capítulo III de un Proyecto de Grado de Ingeniería Electrónica, guiado por los verbos de los objetivos específicos.">
+  <title>PROYECTA-IA | Capítulo III · Desarrollo por Objetivos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="access-locked">
+
+  <div id="accessGate" class="access-gate">
+    <div class="access-card">
+      <div class="access-logo">P</div>
+      <h2>Acceso a PROYECTA-IA</h2>
+      <p class="access-subtitle">Capítulo III · Desarrollo técnico por objetivos</p>
+      <p>Ingresa tu número de Carnet de Identidad autorizado.</p>
+      <label for="ciAccess">Número de C.I.</label>
+      <input id="ciAccess" type="password" inputmode="numeric" autocomplete="off" placeholder="Solo números">
+      <button id="accessBtn" class="primary access-button" type="button">Ingresar</button>
+      <p id="accessMessage" class="access-message" aria-live="polite"></p>
+      <p class="access-privacy">El acceso se valida mediante el archivo central de PROYECTA-IA.</p>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div>
+          <h1>PROYECTA-IA</h1>
+          <p>Capítulo III · Ingeniería del Proyecto</p>
+          <p class="author">Realizado por: Luis Cabezas Tito, Ph. D.</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="badge">DESARROLLO TÉCNICO POR OBJETIVOS</div>
+        <button id="logoutBtn" class="logout-btn hidden" type="button">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <span class="eyebrow">SEGUNDO CHATBOT DEL CAPÍTULO III</span>
+      <h2>DEL OBJETIVO ESPECÍFICO A LA <span>EVIDENCIA DE INGENIERÍA</span></h2>
+      <p>
+        Este módulo guía el desarrollo técnico del proyecto a partir del <strong>verbo en infinitivo de cada
+        Objetivo Específico</strong>. El estudiante no debe demostrar un objetivo acumulando teoría: debe presentar
+        la evidencia ingenieril que corresponda a la acción prometida.
+      </p>
+
+      <div class="scope-warning">
+        <strong>Regla central:</strong> cada Objetivo Específico se transforma en un subtítulo relacionado con
+        la acción técnica, <u>sin escribir “Objetivo Específico 1”, “Objetivo Específico 2”, etc.</u>.
+        Ejemplo: “Seleccionar la tecnología electrónica...” → <b>SELECCIÓN DE LA TECNOLOGÍA ELECTRÓNICA</b>.
+      </div>
+
+      <div class="hero-grid">
+        <article><span>①</span><strong>Interpretar el verbo</strong><p>¿Qué significa realmente identificar, seleccionar, diseñar, implementar, calibrar...?</p></article>
+        <article><span>②</span><strong>Exigir evidencia</strong><p>Cálculos, tablas comparativas, modelos, diagramas, circuitos, algoritmos o montaje según el verbo.</p></article>
+        <article><span>③</span><strong>Diseñar antes de programar</strong><p>Primero arquitectura y algoritmos; después código explicado y firmware.</p></article>
+        <article><span>④</span><strong>Implementar con medición</strong><p>Entradas, salidas, señales, instrumentos y valores reales de integración.</p></article>
+      </div>
+    </section>
+
+    <nav class="section-nav">
+      <a href="#datos">Objetivos</a>
+      <a href="#jerarquia">Jerarquía</a>
+      <a href="#verbos">Analizador de verbos</a>
+      <a href="#ruta">Ruta de diseño</a>
+      <a href="#seleccion">Selección</a>
+      <a href="#matematica">Modelo matemático</a>
+      <a href="#hardware">Hardware</a>
+      <a href="#simulacion">Simulación</a>
+      <a href="#software">Algoritmos</a>
+      <a href="#programacion">Programación</a>
+      <a href="#implementacion">Implementación</a>
+      <a href="#mecanica">Mecánica</a>
+      <a href="#chasis">Chasis</a>
+      <a href="#revisor">Revisor</a>
+    </nav>
+
+    <section id="datos" class="card">
+      <span class="section-number">1</span>
+      <h3>DATOS DEL PROYECTO Y OBJETIVOS</h3>
+      <p>
+        Pega el Objetivo General y los Objetivos Específicos tal como fueron aprobados en el Capítulo I.
+        PROYECTA-IA extraerá el verbo principal y generará una orientación metodológica para cada uno.
+      </p>
+
+      <label for="projectTitle">Título del Proyecto de Grado</label>
+      <textarea id="projectTitle" rows="2" placeholder="Título aprobado del Proyecto de Grado"></textarea>
+
+      <label for="generalObjective">Objetivo General</label>
+      <textarea id="generalObjective" rows="4" placeholder="Pega el Objetivo General aprobado"></textarea>
+
+      <label for="specificObjectives">Objetivos Específicos</label>
+      <textarea id="specificObjectives" rows="10" placeholder="Pega un objetivo por línea. Puede incluir numeración o viñetas."></textarea>
+
+      <div class="two-col">
+        <div>
+          <label for="projectArea">Tipo de proyecto</label>
+          <select id="projectArea">
+            <option value="auto">Detectar automáticamente</option>
+            <option value="control">Control y automatización</option>
+            <option value="electromed">Electromedicina / Biomédica</option>
+            <option value="instrumentation">Instrumentación electrónica</option>
+            <option value="robotics">Robótica / Mecatrónica</option>
+            <option value="embedded">Sistema embebido / IoT aplicado</option>
+            <option value="telecom">Telecomunicaciones</option>
+            <option value="generic">Otro proyecto electrónico</option>
+          </select>
+        </div>
+        <div>
+          <label for="implementationScope">Alcance aprobado</label>
+          <select id="implementationScope">
+            <option value="auto">Inferir del Objetivo General</option>
+            <option value="design">Diseño / simulación</option>
+            <option value="prototype">Diseño e implementación de prototipo</option>
+            <option value="network">Diseño de red (telecomunicaciones)</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="analyzeObjectivesBtn" class="primary" type="button">Analizar objetivos y construir ruta</button>
+      <div id="objectiveAnalysisOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="jerarquia" class="card">
+      <span class="section-number">2</span>
+      <h3>JERARQUÍA DE TÍTULOS Y SUBTÍTULOS DEL CAPÍTULO III</h3>
+      <p>
+        Respeta la plantilla institucional. El texto del subtítulo debe describir la acción técnica realizada,
+        no repetir “Objetivo Específico N.º...”.
+      </p>
+
+      <div class="format-table">
+        <div class="format-row f1"><b>CAPÍTULO III. INGENIERÍA DEL PROYECTO</b><span>Times New Roman · 16 pt · negrilla · mayúsculas · Título 1</span></div>
+        <div class="format-row f2"><b>3.3 DISEÑO DEL SISTEMA ELECTRÓNICO...</b><span>Times New Roman · 14 pt · negrilla · mayúsculas · Título 2</span></div>
+        <div class="format-row f3"><b>3.3.1 DISEÑO DEL SUBSISTEMA DE SENSADO</b><span>Times New Roman · 12 pt · negrilla · mayúsculas · Título 3</span></div>
+        <div class="format-row f4"><b>3.3.1.1 SELECCIÓN DE LOS SENSORES</b><span>Times New Roman · 12 pt · negrilla · esquema numerado · Título 4</span></div>
+        <div class="format-row f5"><b>3.3.1.1.1 CRITERIOS DE SELECCIÓN</b><span>Times New Roman · 12 pt · negrilla · esquema numerado · Título 5</span></div>
+        <div class="format-row normal"><b>Texto principal</b><span>Times New Roman · 12 pt · normal · interlineado según reglamento</span></div>
+      </div>
+
+      <div class="notice blue">
+        <strong>Ejemplo de conversión:</strong><br>
+        OE: “Diseñar el sistema electrónico de adquisición y control...”<br>
+        Subtítulo: <b>3.X DISEÑO DEL SISTEMA ELECTRÓNICO DE ADQUISICIÓN Y CONTROL</b><br>
+        Posibles subniveles: <b>3.X.1 Diseño del hardware</b> · <b>3.X.2 Modelo matemático</b> ·
+        <b>3.X.3 Diseño de software</b> · <b>3.X.4 Simulación</b> · <b>3.X.5 Implementación</b>.
+      </div>
+    </section>
+
+    <section id="verbos" class="card">
+      <span class="section-number">3</span>
+      <h3>VERBO DEL OBJETIVO = COMPROMISO METODOLÓGICO</h3>
+      <p>
+        El verbo no es decorativo. Define qué debe demostrar el estudiante. Un objetivo redactado con
+        <b>seleccionar</b> no se cumple describiendo componentes; uno con <b>diseñar</b> no se cumple mostrando
+        únicamente una tarjeta comercial; uno con <b>implementar</b> no se cumple dejando solo una simulación.
+      </p>
+
+      <div class="verb-legend">
+        <article><b>IDENTIFICAR</b><span>Reconocer, delimitar y sustentar variables, requisitos o elementos relevantes.</span></article>
+        <article><b>SELECCIONAR</b><span>Comparar alternativas con criterios técnicos y justificar una elección.</span></article>
+        <article><b>DISEÑAR</b><span>Dimensionar, calcular, modelar, estructurar y definir una solución antes de construirla.</span></article>
+        <article><b>DESARROLLAR</b><span>Construir progresivamente una solución integrando diseño, software, hardware y firmware.</span></article>
+        <article><b>IMPLEMENTAR</b><span>Materializar e integrar físicamente o desplegar la solución diseñada.</span></article>
+        <article><b>CALIBRAR</b><span>Comparar contra referencia, determinar error y ajustar parámetros del sistema.</span></article>
+      </div>
+
+      <div class="notice amber">
+        <strong>Verbos vagos:</strong> “realizar”, “hacer”, “explicar” o “describir” pueden ser insuficientes
+        si el objetivo pretende demostrar ingeniería aplicada. El chatbot no cambia el objetivo aprobado, pero
+        advertirá qué evidencia mínima debe aparecer para que la acción tenga contenido técnico.
+      </div>
+
+      <div id="verbCards" class="verb-cards"></div>
+    </section>
+
+    <section id="ruta" class="card">
+      <span class="section-number">4</span>
+      <h3>RUTA GENERAL DE DISEÑO PARA CONTROL, AUTOMATIZACIÓN, ELECTROMEDICINA E INSTRUMENTACIÓN</h3>
+      <p>
+        No todos los objetivos necesitan todas las etapas. Sin embargo, cuando el verbo es <b>diseñar</b>,
+        <b>desarrollar</b> o <b>implementar</b>, el estudiante debe comprobar si corresponden los siguientes
+        productos de ingeniería.
+      </p>
+
+      <div class="route-grid">
+        <article><span>1</span><b>Requerimientos</b><p>Qué debe hacer el sistema, variables, rangos, restricciones y condiciones de operación.</p></article>
+        <article><span>2</span><b>Selección tecnológica</b><p>Alternativas, criterios técnicos, comparación y justificación.</p></article>
+        <article><span>3</span><b>Cálculos y modelo matemático</b><p>Ecuaciones del sensor, acondicionamiento, planta, actuador, energía o mecanismo según corresponda.</p></article>
+        <article><span>4</span><b>Diseño de hardware</b><p>Circuitos, interfaces, niveles eléctricos, potencia, protección, alimentación y señales.</p></article>
+        <article><span>5</span><b>Diseño de software</b><p>Algoritmos y diagramas de flujo antes de escribir código.</p></article>
+        <article><span>6</span><b>Programación / firmware</b><p>Código correspondiente a cada algoritmo, explicado y conectado con el hardware.</p></article>
+        <article><span>7</span><b>Simulación</b><p>Esquema + estímulos + instrumentos + salidas/curvas/valores simulados.</p></article>
+        <article><span>8</span><b>Implementación</b><p>Montaje, integración, señales reales e instrumentos de laboratorio, si el alcance lo exige.</p></article>
+        <article><span>9</span><b>Diseño mecánico</b><p>Cuando exista estructura móvil, carga, esfuerzo, velocidad, torque o soporte mecánico.</p></article>
+        <article><span>10</span><b>Chasis / gabinete</b><p>Distribución, dimensiones, protección, ventilación, conectores, acceso y seguridad.</p></article>
+      </div>
+
+      <div class="notice red">
+        <strong>Fuera de este chatbot:</strong> pruebas formales, evaluación técnica, validación final,
+        análisis estadístico de resultados, comparación con criterios de aceptación y conclusiones de desempeño
+        pertenecen al <b>CAPÍTULO IV. PRUEBAS Y ANÁLISIS</b>.
+      </div>
+
+      <div class="notice purple">
+        <strong>Telecomunicaciones:</strong> este módulo no obliga a implementar físicamente una red.
+        En proyectos de telecomunicaciones se orientará únicamente la estructura general del diseño;
+        el dimensionamiento de cobertura, tráfico, capacidad, propagación, topología, disponibilidad,
+        presupuesto de enlace y evaluación económico-técnica se desarrollará en un chatbot especializado.
+      </div>
+    </section>
+
+    <section id="seleccion" class="card">
+      <span class="section-number">5</span>
+      <h3>SELECCIÓN DE COMPONENTES Y TECNOLOGÍA</h3>
+      <p>
+        La selección no consiste en copiar la descripción del fabricante. Debe comparar alternativas y
+        justificar por qué una opción satisface mejor los requerimientos del proyecto.
+      </p>
+
+      <div class="comparison-example">
+        <table>
+          <thead><tr><th>Alternativa</th><th>Variables a comparar</th><th>Evidencia</th><th>Decisión</th></tr></thead>
+          <tbody>
+            <tr><td>Sensor / plataforma A</td><td>Rango, precisión, resolución, interfaz, tensión, consumo, disponibilidad, costo</td><td>Datasheet + cálculos + compatibilidad</td><td>Seleccionado / no seleccionado</td></tr>
+            <tr><td>Sensor / plataforma B</td><td>Los mismos criterios</td><td>Datasheet + cálculos + compatibilidad</td><td>Seleccionado / no seleccionado</td></tr>
+            <tr><td>Sensor / plataforma C</td><td>Los mismos criterios</td><td>Datasheet + cálculos + compatibilidad</td><td>Seleccionado / no seleccionado</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <label for="selectionText">Pega tu sección de selección tecnológica</label>
+      <textarea id="selectionText" rows="10" placeholder="Incluye comparación, criterios, alternativas y justificación final."></textarea>
+      <button id="reviewSelectionBtn" class="primary" type="button">Revisar selección</button>
+      <div id="selectionOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="matematica" class="card">
+      <span class="section-number">6</span>
+      <h3>MODELO MATEMÁTICO Y CÁLCULOS DEL DISEÑO</h3>
+      <p>
+        En el Marco Práctico deben aparecer <strong>ecuaciones aplicadas al proyecto</strong>. No basta con
+        explicar qué es un sensor, un microcontrolador o una tarjeta: esa teoría pertenece al Marco Teórico.
+        Las fórmulas deben conducir a una decisión de diseño, dimensionamiento o predicción.
+      </p>
+
+      <div class="math-models">
+        <article>
+          <h4>Conversión y acondicionamiento</h4>
+          <p><span class="eq">V<sub>out</sub> = V<sub>in</sub> · R₂/(R₁+R₂)</span></p>
+          <p>Aplicar cuando se diseña un divisor, adaptación de nivel o etapa equivalente. Debe sustituirse con los valores reales del proyecto.</p>
+        </article>
+        <article>
+          <h4>Resolución de adquisición</h4>
+          <p><span class="eq">ΔV ≈ V<sub>ref</sub>/(2ⁿ − 1)</span></p>
+          <p>Permite justificar si la resolución del ADC es suficiente para distinguir el cambio mínimo de la variable.</p>
+        </article>
+        <article>
+          <h4>Dimensionamiento energético</h4>
+          <p><span class="eq">I<sub>T</sub> = Σ Iᵢ</span> &nbsp; <span class="eq">P = V·I</span></p>
+          <p>Debe incluir simultaneidad de cargas y margen de diseño razonado, no elegido arbitrariamente.</p>
+        </article>
+        <article>
+          <h4>Modelo dinámico</h4>
+          <p><span class="eq">G(s)=K/(τs+1)</span></p>
+          <p>Puede utilizarse para una dinámica aproximadamente de primer orden cuando existe fundamento experimental o físico.</p>
+        </article>
+        <article>
+          <h4>Modelo discreto</h4>
+          <p><span class="eq">a=e<sup>−Tₛ/τ</sup></span> &nbsp; <span class="eq">y[k]=a·y[k−1]+(1−a)·Ku[k]</span></p>
+          <p>Relaciona el modelo continuo con el muestreo del sistema embebido cuando la aproximación es pertinente.</p>
+        </article>
+        <article>
+          <h4>Mecánica básica</h4>
+          <p><span class="eq">F=m·a</span> &nbsp; <span class="eq">τ=F·r</span> &nbsp; <span class="eq">σ=F/A</span></p>
+          <p>Solo si el sistema posee estructura mecánica, movimiento, carga o esfuerzo que lo justifique.</p>
+        </article>
+      </div>
+
+      <div class="notice blue">
+        <strong>No fuerces un modelo:</strong> las ecuaciones dependen del sistema. Un sensor digital, un filtro,
+        una etapa de potencia, un motor, una planta térmica, un sistema biomédico o un mecanismo robótico no se
+        modelan de la misma manera. La fórmula elegida debe tener significado físico y parámetros identificables.
+      </div>
+
+      <label for="mathText">Pega tus cálculos o descripción del modelo matemático</label>
+      <textarea id="mathText" rows="11" placeholder="Incluye ecuaciones, variables, unidades, sustitución numérica, resultado e interpretación."></textarea>
+      <button id="reviewMathBtn" class="primary" type="button">Revisar modelo y cálculos</button>
+      <div id="mathOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="hardware" class="card">
+      <span class="section-number">7</span>
+      <h3>DISEÑO DE HARDWARE</h3>
+      <p>
+        El diseño de hardware debe mostrar cómo se conectan y dimensionan eléctricamente los subsistemas.
+        No es suficiente colocar una fotografía de Arduino, ESP32, un sensor o una placa comercial.
+      </p>
+
+      <div class="hardware-checks">
+        <article><b>Entradas</b><span>Variable física, sensor, rango, tipo de señal, amplitud, frecuencia o protocolo.</span></article>
+        <article><b>Acondicionamiento</b><span>Ganancia, filtrado, adaptación, aislamiento, protección y conversión si corresponde.</span></article>
+        <article><b>Procesamiento</b><span>Interfaz, pines, resolución, tiempos de muestreo y compatibilidad lógica.</span></article>
+        <article><b>Salidas</b><span>Actuadores, drivers, relés, MOSFET, DAC/PWM, niveles y potencia.</span></article>
+        <article><b>Alimentación</b><span>Tensiones, corrientes, potencia, convertidores, márgenes y protecciones.</span></article>
+        <article><b>Seguridad</b><span>Aislamiento, fusibles, tierra, diodos, supresión, separación señal/potencia.</span></article>
+      </div>
+
+      <label for="hardwareText">Describe o pega tu diseño de hardware</label>
+      <textarea id="hardwareText" rows="12" placeholder="Pega la sección de hardware, cálculos, señales, interfaces y protecciones."></textarea>
+      <button id="reviewHardwareBtn" class="primary" type="button">Revisar diseño de hardware</button>
+      <div id="hardwareOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="simulacion" class="card">
+      <span class="section-number">8</span>
+      <h3>SIMULACIÓN: EL CIRCUITO NO ES EL RESULTADO</h3>
+      <p>
+        Una captura del circuito armado en Proteus, Multisim, LTspice, MATLAB/Simulink u otro simulador
+        demuestra que el esquema fue dibujado, pero <strong>no demuestra cómo se comporta</strong>.
+        La simulación debe incluir estímulos y resultados observables.
+      </p>
+
+      <div class="simulation-flow">
+        <div>Entrada / estímulo<br><small>valor, rango, forma de onda</small></div>
+        <span>→</span>
+        <div>Circuito / modelo<br><small>parámetros reales</small></div>
+        <span>→</span>
+        <div>Instrumento virtual<br><small>scope, voltímetro, gráfico...</small></div>
+        <span>→</span>
+        <div>Resultado simulado<br><small>curva, nivel, estado, tiempo</small></div>
+      </div>
+
+      <div class="simulation-table">
+        <table>
+          <thead><tr><th>Qué debe documentarse</th><th>Ejemplo de evidencia</th></tr></thead>
+          <tbody>
+            <tr><td>Condición de entrada</td><td>Temperatura simulada 34 °C; seno 1 kHz y 100 mV; corriente de carga 1,2 A...</td></tr>
+            <tr><td>Variable observada</td><td>Voltaje, corriente, PWM, frecuencia, estado lógico, curva temporal...</td></tr>
+            <tr><td>Instrumento virtual</td><td>Osciloscopio, multímetro, analizador lógico, Bode, gráfica temporal...</td></tr>
+            <tr><td>Resultado</td><td>Valor o forma de onda obtenida y explicación física.</td></tr>
+            <tr><td>Relación con el diseño</td><td>Qué parámetro confirma o qué ajuste obliga a realizar.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <label for="simulationText">Describe tu simulación y sus resultados</label>
+      <textarea id="simulationText" rows="11" placeholder="No describas solo el circuito. Indica entradas aplicadas, instrumentos, magnitudes observadas, valores/curvas y qué demuestran dentro del diseño."></textarea>
+      <button id="reviewSimulationBtn" class="primary" type="button">Revisar simulación</button>
+      <div id="simulationOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="software" class="card">
+      <span class="section-number">9</span>
+      <h3>DISEÑO DE SOFTWARE = ALGORITMOS, NO CÓDIGO</h3>
+      <p>
+        Antes de programar debe existir un algoritmo. El diseño lógico se expresa mediante diagramas de flujo,
+        máquinas de estados, pseudocódigo u otra representación adecuada. En proyectos de microcontroladores,
+        el flujograma permite justificar la secuencia de adquisición, cálculo, decisión, control, comunicación y salida.
+      </p>
+
+      <div class="flow-symbols">
+        <article>
+          <svg viewBox="0 0 180 90"><rect x="25" y="24" width="130" height="44" rx="22"/></svg>
+          <b>Inicio / Fin</b><span>Marca el comienzo o terminación de un algoritmo o subrutina.</span>
+        </article>
+        <article>
+          <svg viewBox="0 0 180 90"><polygon points="40,22 155,22 135,68 20,68"/></svg>
+          <b>Entrada / Salida</b><span>Leer sensores, introducir parámetros, mostrar o transmitir información.</span>
+        </article>
+        <article>
+          <svg viewBox="0 0 180 90"><rect x="25" y="22" width="130" height="46"/></svg>
+          <b>Proceso</b><span>Calcular, filtrar, convertir, actualizar variables, ejecutar una operación.</span>
+        </article>
+        <article>
+          <svg viewBox="0 0 180 90"><polygon points="90,12 155,45 90,78 25,45"/></svg>
+          <b>Decisión</b><span>Evalúa una condición y abre al menos dos rutas: Sí/No, verdadero/falso.</span>
+        </article>
+        <article>
+          <svg viewBox="0 0 180 90"><rect x="25" y="22" width="130" height="46"/><line x1="38" y1="22" x2="38" y2="68"/><line x1="142" y1="22" x2="142" y2="68"/></svg>
+          <b>Subproceso</b><span>Llama una función o algoritmo previamente definido.</span>
+        </article>
+        <article>
+          <svg viewBox="0 0 180 90"><circle cx="90" cy="45" r="24"/></svg>
+          <b>Conector</b><span>Evita líneas excesivamente largas o cruzadas y enlaza partes del diagrama.</span>
+        </article>
+      </div>
+
+      <h4>Ejemplo conceptual de algoritmo de control</h4>
+      <svg class="example-flow" viewBox="0 0 950 260" xmlns="http://www.w3.org/2000/svg">
+        <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z"/></marker></defs>
+        <rect x="25" y="85" width="120" height="48" rx="24" class="fshape"/><text x="85" y="115" text-anchor="middle">Inicio</text>
+        <polygon points="185,82 325,82 305,136 165,136" class="fshape"/><text x="245" y="114" text-anchor="middle">Leer sensores</text>
+        <rect x="365" y="82" width="140" height="54" class="fshape"/><text x="435" y="105" text-anchor="middle">Calcular /</text><text x="435" y="123" text-anchor="middle">procesar</text>
+        <polygon points="610,67 690,109 610,151 530,109" class="fshape"/><text x="610" y="105" text-anchor="middle">¿Condición</text><text x="610" y="123" text-anchor="middle">cumplida?</text>
+        <rect x="735" y="82" width="155" height="54" class="fshape"/><text x="812" y="105" text-anchor="middle">Actualizar salida</text><text x="812" y="123" text-anchor="middle">/ actuador</text>
+        <g class="flowline" marker-end="url(#arr)">
+          <line x1="145" y1="109" x2="165" y2="109"/><line x1="325" y1="109" x2="365" y2="109"/><line x1="505" y1="109" x2="530" y2="109"/><line x1="690" y1="109" x2="735" y2="109"/>
+        </g>
+        <text x="710" y="98" class="small-svg">Sí</text>
+        <path d="M610 151 L610 205 L245 205 L245 136" class="flowline" marker-end="url(#arr)"/>
+        <text x="585" y="180" class="small-svg">No / repetir</text>
+      </svg>
+
+      <div class="upload-zone">
+        <label for="flowchartImage">Carga tu flujograma (PNG, JPG, WEBP o SVG)</label>
+        <input id="flowchartImage" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
+        <div id="flowchartMeta" class="small"></div>
+        <div id="flowchartPreviewWrap" class="image-preview hidden"><img id="flowchartPreview" alt="Flujograma cargado por el estudiante"></div>
+        <label for="flowchartDescription">Describe brevemente qué hace el algoritmo</label>
+        <textarea id="flowchartDescription" rows="6" placeholder="Entradas → procesamiento → decisiones → salidas → repetición..."></textarea>
+        <div class="check-grid">
+          <label><input type="checkbox" class="flow-check" value="inicio"> Tiene inicio y final/retorno.</label>
+          <label><input type="checkbox" class="flow-check" value="io"> Diferencia entrada/salida.</label>
+          <label><input type="checkbox" class="flow-check" value="decision"> Las decisiones tienen ramas identificadas.</label>
+          <label><input type="checkbox" class="flow-check" value="loop"> El ciclo o retorno está cerrado correctamente.</label>
+          <label><input type="checkbox" class="flow-check" value="variables"> Las variables y condiciones son legibles.</label>
+          <label><input type="checkbox" class="flow-check" value="coherence"> Coincide con el objetivo y hardware.</label>
+        </div>
+        <div class="actions">
+          <button id="reviewFlowchartBtn" class="primary" type="button">Revisión básica del flujograma</button>
+          <button id="copyFlowPromptBtn" class="secondary" type="button">Copiar prompt para revisión visual profunda</button>
+        </div>
+        <div id="flowchartOutput" class="output-box hidden"></div>
+      </div>
+    </section>
+
+    <section id="programacion" class="card">
+      <span class="section-number">10</span>
+      <h3>PROGRAMACIÓN Y FIRMWARE: DESPUÉS DEL ALGORITMO</h3>
+      <p>
+        Cada algoritmo relevante debe tener su implementación en código. El documento debe explicar el programa
+        por bloques lógicos o líneas significativas: configuración, lectura, cálculo, decisión, salidas, comunicación,
+        temporización, seguridad y manejo de errores.
+      </p>
+
+      <div class="code-rule-grid">
+        <article><b>Algoritmo ↔ código</b><span>Debe poder identificarse qué parte del código implementa cada bloque del flujograma.</span></article>
+        <article><b>Variables físicas</b><span>Explica unidades y significado: °C, V, A, Hz, ppm, lux, BPM, etc.</span></article>
+        <article><b>Entradas y salidas</b><span>Indica pines, interfaces, ADC, PWM, UART, I²C, SPI, DAC o red cuando corresponda.</span></article>
+        <article><b>Condiciones</b><span>Justifica umbrales, setpoints, histéresis, temporizadores y prioridades.</span></article>
+        <article><b>Funciones</b><span>Explica qué hace cada función relevante, sus entradas, resultado y relación con el algoritmo.</span></article>
+        <article><b>Firmware</b><span>Comprueba que el software cargado corresponda exactamente con el hardware conectado.</span></article>
+      </div>
+
+      <label for="codeText">Pega un fragmento del programa</label>
+      <textarea id="codeText" class="code-area" rows="16" placeholder="// Pega aquí el código de un algoritmo o subsistema"></textarea>
+      <div class="actions">
+        <button id="reviewCodeBtn" class="primary" type="button">Revisar estructura del código</button>
+        <button id="copyCodePromptBtn" class="secondary" type="button">Copiar prompt para explicación técnica</button>
+      </div>
+      <div id="codeOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="implementacion" class="card">
+      <span class="section-number">11</span>
+      <h3>IMPLEMENTACIÓN DE HARDWARE Y SOFTWARE</h3>
+      <p>
+        Implementar significa materializar e integrar el diseño. Si el objetivo exige implementación, el estudiante
+        debe mostrar cómo se conectó el sistema y qué señales reales existen en las interfaces.
+      </p>
+
+      <div class="implementation-grid">
+        <article><b>Montaje</b><span>Protoboard, tarjeta perforada, PCB, módulos, conectores, drivers y fuente.</span></article>
+        <article><b>Entradas</b><span>Variable física, señal analógica/digital, rango y magnitud real.</span></article>
+        <article><b>Procesamiento</b><span>Adquisición, algoritmo/firmware, frecuencia de muestreo o lógica de decisión.</span></article>
+        <article><b>Salidas</b><span>Voltaje, corriente, PWM, estado lógico, frecuencia, comando o acción física.</span></article>
+        <article><b>Realimentación</b><span>Sensor de retorno y señal de feedback cuando exista lazo cerrado.</span></article>
+        <article><b>Instrumentación</b><span>Multímetro, osciloscopio, analizador lógico, espectro, fuente, generador u otro instrumento pertinente.</span></article>
+      </div>
+
+      <div class="notice amber">
+        <strong>En el Capítulo III:</strong> estos valores documentan que el montaje y las interfaces fueron
+        integrados correctamente. <strong>No conviertas todavía esta sección en el Capítulo IV</strong>:
+        no hagas aquí la evaluación final de desempeño ni el dictamen de cumplimiento global.
+      </div>
+
+      <label for="implementationText">Pega tu sección de implementación</label>
+      <textarea id="implementationText" rows="12" placeholder="Describe montaje, señales, valores medidos, instrumentos y relación con el diseño."></textarea>
+      <button id="reviewImplementationBtn" class="primary" type="button">Revisar implementación</button>
+      <div id="implementationOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="mecanica" class="card">
+      <span class="section-number">12</span>
+      <h3>DISEÑO MECÁNICO — CUANDO EL PROYECTO LO REQUIERA</h3>
+      <p>
+        En robots, mecanismos, estructuras móviles, soportes o sistemas con cargas, el Capítulo III debe justificar
+        dimensiones y elementos mecánicos mediante cálculos básicos, no únicamente mediante un dibujo CAD.
+      </p>
+
+      <div class="mechanical-grid">
+        <article><b>Masa y peso</b><span>W = m·g. Distribución de masa y efecto sobre soporte o locomoción.</span></article>
+        <article><b>Movimiento</b><span>v = Δx/Δt, a = Δv/Δt y F = m·a cuando corresponda.</span></article>
+        <article><b>Torque</b><span>τ = F·r para motor, rueda, brazo, polea o mecanismo equivalente.</span></article>
+        <article><b>Potencia mecánica</b><span>P = τ·ω o P = F·v según el sistema.</span></article>
+        <article><b>Esfuerzo</b><span>σ = F/A para una primera comprobación axial; flexión y corte requieren su modelo correspondiente.</span></article>
+        <article><b>Factor de seguridad</b><span>Debe justificarse según material, carga, incertidumbre y condiciones de servicio.</span></article>
+      </div>
+
+      <label for="mechanicalText">Pega tu diseño mecánico (si aplica)</label>
+      <textarea id="mechanicalText" rows="9" placeholder="Cálculos, cargas, material, dimensiones, velocidad, torque, esfuerzos..."></textarea>
+      <button id="reviewMechanicalBtn" class="primary" type="button">Revisar diseño mecánico</button>
+      <div id="mechanicalOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="chasis" class="card">
+      <span class="section-number">13</span>
+      <h3>DISEÑO DEL CHASIS, GABINETE O CARCASA</h3>
+      <p>
+        El chasis no es un adorno: protege, organiza y soporta el sistema. Debe considerar estabilidad mecánica,
+        disipación térmica, seguridad eléctrica, acceso para mantenimiento, conectores y ambiente de operación.
+      </p>
+
+      <div class="chassis-grid">
+        <article><b>Dimensiones</b><span>Se obtienen de la distribución real de tarjetas, fuentes, terminales, ventilación y espacio de cableado.</span></article>
+        <article><b>Material</b><span>Acrílico, polímero, aluminio, acero u otro, elegido por ambiente, masa, mecanizado, aislamiento y costo.</span></article>
+        <article><b>Distribución interna</b><span>Separar potencia y señal; facilitar cableado, inspección y sustitución de módulos.</span></article>
+        <article><b>Térmica</b><span>Potencia disipada, convección, rejillas o ventilación activa cuando sea necesario.</span></article>
+        <article><b>Protección ambiental</b><span>Polvo, agua, humedad, corrosión e ingreso de cuerpos sólidos según el entorno real.</span></article>
+        <article><b>Seguridad</b><span>Tierra, fusibles, aislamiento, pasacables, separación AC/DC, sujeción y protección de partes energizadas.</span></article>
+        <article><b>Paneles</b><span>Entradas, salidas, indicadores, botones, conectores, ventiladores y rotulado.</span></article>
+        <article><b>Fabricación</b><span>CAD, corte láser/CNC, impresión 3D, plegado, mecanizado o gabinete comercial adaptado.</span></article>
+      </div>
+
+      <svg class="chassis-svg" viewBox="0 0 900 370" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="210,90 620,90 740,160 330,160" class="c-top"/>
+        <polygon points="210,90 330,160 330,315 210,245" class="c-side"/>
+        <rect x="330" y="160" width="410" height="155" class="c-front"/>
+        <rect x="385" y="195" width="145" height="55" rx="5" class="c-screen"/>
+        <rect x="575" y="205" width="38" height="65" rx="4" class="c-switch"/>
+        <circle cx="663" cy="207" r="10" class="c-led"/><circle cx="663" cy="245" r="10" class="c-led"/>
+        <rect x="225" y="135" width="65" height="65" rx="5" class="c-vent"/>
+        <text x="455" y="230" text-anchor="middle">Pantalla / interfaz</text>
+        <text x="594" y="292" text-anchor="middle">ON/OFF</text>
+        <text x="690" y="212">Estado</text><text x="690" y="250">Alarma</text>
+        <text x="250" y="220" text-anchor="middle">Ventilación</text>
+        <text x="535" y="345" text-anchor="middle">Ejemplo conceptual: adaptar al proyecto real</text>
+      </svg>
+
+      <label for="chassisText">Describe o pega el diseño de tu chasis/gabinete</label>
+      <textarea id="chassisText" rows="10" placeholder="Dimensiones, material, distribución, térmica, seguridad, conectores, ambiente, fabricación..."></textarea>
+      <button id="reviewChassisBtn" class="primary" type="button">Revisar chasis</button>
+      <div id="chassisOutput" class="output-box hidden"></div>
+    </section>
+
+    <section class="card">
+      <span class="section-number">14</span>
+      <h3>FUENTES TÉCNICAS QUE EL ESTUDIANTE DEBE PRIORIZAR</h3>
+      <p>
+        Para especificaciones y modelos, prioriza hojas de datos del fabricante, normas, manuales técnicos,
+        libros de ingeniería y documentación oficial del software o plataforma utilizada.
+      </p>
+      <div class="source-links">
+        <a href="https://docs.arduino.cc/learn/" target="_blank" rel="noopener">Arduino Documentation · aprendizaje y electrónica</a>
+        <a href="https://docs.arduino.cc/language-reference/" target="_blank" rel="noopener">Arduino Language Reference</a>
+        <a href="https://www.mathworks.com/help/control/ug/transfer-functions.html" target="_blank" rel="noopener">MathWorks · funciones de transferencia</a>
+        <a href="https://webstore.iec.ch/en/publication/2452" target="_blank" rel="noopener">IEC 60529 · grados de protección IP</a>
+        <a href="https://www.ni.com/en/shop/data-acquisition/measurement-fundamentals/analog-fundamentals/acquiring-an-analog-signal--bandwidth--nyquist-sampling-theorem-.html" target="_blank" rel="noopener">NI · adquisición y muestreo de señales</a>
+      </div>
+      <div class="notice blue">
+        Una fuente externa debe apoyar el diseño; <strong>no reemplaza el cálculo propio</strong>. Si un valor de
+        precisión, rango, corriente máxima, frecuencia, ancho de banda o tensión proviene de un datasheet,
+        cítalo y luego explica cómo ese valor condiciona tu proyecto.
+      </div>
+    </section>
+
+    <section id="revisor" class="card">
+      <span class="section-number">15</span>
+      <h3>REVISOR INTEGRAL DEL DESARROLLO DEL CAPÍTULO III</h3>
+      <p>
+        El dictamen comprueba si la documentación aportada tiene evidencias compatibles con el tipo de proyecto
+        y con los verbos de los Objetivos Específicos.
+      </p>
+      <button id="runFullReviewBtn" class="primary" type="button">Emitir dictamen integral</button>
+      <div id="fullReviewOutput" class="output-box hidden"></div>
+    </section>
+
+    <section class="card">
+      <span class="section-number">16</span>
+      <h3>PROMPT COMPLETO PARA REVISIÓN PROFUNDA EN CHATGPT</h3>
+      <p>
+        Completa los campos, copia el prompt y adjunta las figuras, esquemas, flujogramas o capturas de simulación
+        cuando corresponda.
+      </p>
+      <button id="copyDeepPromptBtn" class="primary" type="button">Copiar prompt completo</button>
+      <p id="deepPromptStatus" class="small"></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>
+        <strong>PROYECTA-IA</strong>
+        <p>Capítulo III · Ingeniería del Proyecto · Desarrollo técnico por objetivos</p>
+      </div>
+      <div class="footer-author">Luis Cabezas Tito, Ph. D.</div>
+    </div>
+  </footer>
+
+  <script src="https://luisctito-sketch.github.io/proyecta-ia-acceso/access.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
